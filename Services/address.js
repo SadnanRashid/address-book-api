@@ -11,7 +11,7 @@ const QueryListOfContacts = async () => {
     return error;
   }
 };
-
+// Get targeted contact with ID
 const QueryTargetContact = async (id) => {
   try {
     const query = { _id: ObjectId(id) };
@@ -24,4 +24,14 @@ const QueryTargetContact = async (id) => {
   }
 };
 
-module.exports = { QueryListOfContacts, QueryTargetContact };
+// Post a single contact
+const QueryPostContact = async (data) => {
+  try {
+    const result = getCollection("contacts").insertOne(data);
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { QueryListOfContacts, QueryTargetContact, QueryPostContact };

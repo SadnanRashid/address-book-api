@@ -16,5 +16,5 @@ const contactsRouter = require("./Routes/contacts");
 app.use("/api/contacts", contactsRouter);
 
 app.get("/", (req, res) => {
-  res.send({ msg: "Working..." });
+  res.send({ message: "Working..." });
 });
