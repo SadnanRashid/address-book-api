@@ -11,6 +11,10 @@ app.listen(port, () => {
   console.log(`listening at port ${port}`);
 });
 
+// get router
+const contactsRouter = require("./Routes/contacts");
+app.use("/api/contacts", contactsRouter);
+
 app.get("/", (req, res) => {
   res.send({ msg: "Working..." });
 });

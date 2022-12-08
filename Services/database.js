@@ -10,11 +10,13 @@ const connectDatabase = () => {
     useUnifiedTopology: true,
     serverApi: ServerApiVersion.v1,
   });
+  return client;
   //   return? dlt
 };
 
 const getCollection = (collection) => {
-  client.db("address-book").collection(collection);
+  const client = connectDatabase();
+  return client.db("address-book").collection(collection);
 };
 
 module.exports = {
