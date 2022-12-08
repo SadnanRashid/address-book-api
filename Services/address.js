@@ -1,4 +1,5 @@
 const { getCollection } = require("../Services/database");
+const { ObjectId } = require("mongodb");
 
 const QueryListOfContacts = async () => {
   try {
@@ -11,4 +12,16 @@ const QueryListOfContacts = async () => {
   }
 };
 
-module.exports = { QueryListOfContacts };
+const QueryTargetContact = async (id) => {
+  try {
+    const query = { _id: ObjectId(id) };
+    const cursor = await getCollection("contacts").findOne(query);
+    // const specificService = await servicesCol.findOne(query);
+    // const contact = await cursor;
+    return cursor;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { QueryListOfContacts, QueryTargetContact };
