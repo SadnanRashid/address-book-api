@@ -1,4 +1,7 @@
-const { QueryPostContact } = require("../Services/address");
+const {
+  QueryPostContact,
+  QueryPostManyContact,
+} = require("../Services/address");
 
 const PostOneContact = async (req, res) => {
   const data = req.body;
@@ -7,4 +10,11 @@ const PostOneContact = async (req, res) => {
   return res.json(postResult);
 };
 
-module.exports = { PostOneContact };
+// Add many to database
+const PostManyContact = async (req, res) => {
+  const data = req.body;
+  const postResult = await QueryPostManyContact(data);
+  res.json(postResult);
+};
+
+module.exports = { PostOneContact, PostManyContact };

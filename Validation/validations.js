@@ -5,6 +5,15 @@ const validateID = (req, res, next) => {
   }
   next();
 };
+// Check if var is array
+const isArray = (req, res, next) => {
+  if (!Array.isArray(req.body)) {
+    return res
+      .status(403)
+      .json({ message: "the data must be an array of object" });
+  }
+  next();
+};
 
 // Validate POST data
 // Validation of object data should return all the error causing inputs..
@@ -37,4 +46,4 @@ const validatePost = (req, res, next) => {
   next();
 };
 
-module.exports = { validateID, validatePost };
+module.exports = { validateID, validatePost, isArray };

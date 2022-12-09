@@ -24,7 +24,7 @@ const QueryTargetContact = async (id) => {
   }
 };
 
-// Post a single contact
+// Post a contact
 const QueryPostContact = async (data) => {
   try {
     const result = getCollection("contacts").insertOne(data);
@@ -33,5 +33,21 @@ const QueryPostContact = async (data) => {
     return error;
   }
 };
+// Post multiple
+const QueryPostManyContact = async (data) => {
+  try {
+    const result = getCollection("contacts").insertMany(data);
+    let ids = result.insertedIds;
+    console.log(ids);
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
 
-module.exports = { QueryListOfContacts, QueryTargetContact, QueryPostContact };
+module.exports = {
+  QueryListOfContacts,
+  QueryTargetContact,
+  QueryPostContact,
+  QueryPostManyContact,
+};
