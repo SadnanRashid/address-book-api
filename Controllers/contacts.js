@@ -2,6 +2,7 @@ const {
   QueryListOfContacts,
   QueryTargetContact,
   QueryUpdateContact,
+  QueryDeleteContact,
 } = require("../Services/address");
 
 const GetAllContacts = async (req, res) => {
@@ -27,6 +28,11 @@ const UpdateContact = async (req, res) => {
     req.body.update_data
   );
   res.json(updateResult);
+};
+// Delete contact
+const DeleteContact = async (req, res) => {
+  const deleteResult = QueryDeleteContact(req.params.id);
+  res.json(deleteResult);
 };
 
 module.exports = { GetAllContacts, GetTargetContact, UpdateContact };

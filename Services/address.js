@@ -62,10 +62,22 @@ const QueryUpdateContact = async (elementID, elementToUpdate, updateData) => {
   }
 };
 
+// Delete contact
+const QueryDeleteContact = async (id) => {
+  try {
+    const filter = { _id: ObjectId(id) };
+    const result = await getCollection("contacts").deleteOne(filter);
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
   QueryListOfContacts,
   QueryTargetContact,
   QueryPostContact,
   QueryPostManyContact,
   QueryUpdateContact,
+  QueryDeleteContact,
 };
