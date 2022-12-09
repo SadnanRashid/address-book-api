@@ -1,4 +1,4 @@
-POST:
+POST - Single:
 {
     "first_name" : "Sadnan",
     "last_name" : "Rashid",
@@ -11,7 +11,7 @@ POST:
 POST - Many:
 [
     {
-    "first_name" : "an",
+    "first_name" : "Sadnan",
     "last_name" : "Rashid",
     "email" : "sadnan.com",
     "phone" : 47428463121,
@@ -19,7 +19,7 @@ POST - Many:
     "country" : "Bangladesh"
 },
 {
-    "first_name" : "an",
+    "first_name" : "Sadnan",
     "last_name" : "Rashid",
     "email" : "sadnan.com",
     "phone" : 47428463121,
@@ -28,4 +28,10 @@ POST - Many:
 }
 ]
 -----------------------------------------
-
+UPDATE:
+[fetch (http://localhost:5000/api/contacts/update/63933972af0e70e36d1d280e)]
+{
+    "element_to_update" : "first_name",
+    "update_data" : "NotSadnan"
+}
+-----------------------------------------

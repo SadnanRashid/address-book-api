@@ -19,12 +19,14 @@ const GetTargetContact = async (req, res) => {
 };
 // Update Contact
 const UpdateContact = async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
   const updateResult = await QueryUpdateContact(
-    req.body.element_id,
+    id,
     req.body.element_to_update,
     req.body.update_data
   );
   res.json(updateResult);
 };
 
-module.exports = { GetAllContacts, GetTargetContact };
+module.exports = { GetAllContacts, GetTargetContact, UpdateContact };

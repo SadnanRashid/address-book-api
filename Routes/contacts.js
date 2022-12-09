@@ -5,7 +5,11 @@ const {
   validatePost,
   isArray,
 } = require("../Validation/validations");
-const { GetAllContacts, GetTargetContact } = require("../Controllers/contacts");
+const {
+  GetAllContacts,
+  GetTargetContact,
+  UpdateContact,
+} = require("../Controllers/contacts");
 const {
   PostOneContact,
   PostManyContact,
@@ -15,5 +19,6 @@ router.get("/all", GetAllContacts);
 router.get("/:id", validateID, GetTargetContact);
 router.post("/add", validatePost, PostOneContact);
 router.post("/addmany", PostManyContact);
+router.put("/update/:id", validateID, UpdateContact);
 // return router
 module.exports = router;

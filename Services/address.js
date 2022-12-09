@@ -56,7 +56,6 @@ const QueryUpdateContact = async (elementID, elementToUpdate, updateData) => {
       filter,
       updateDocument
     );
-    console.log(result);
     return result;
   } catch (error) {
     return error;
