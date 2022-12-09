@@ -9,6 +9,7 @@ const {
   GetAllContacts,
   GetTargetContact,
   UpdateContact,
+  DeleteContact,
 } = require("../Controllers/contacts");
 const {
   PostOneContact,
@@ -20,5 +21,6 @@ router.get("/:id", validateID, GetTargetContact);
 router.post("/add", validatePost, PostOneContact);
 router.post("/addmany", PostManyContact);
 router.put("/update/:id", validateID, UpdateContact);
+router.delete("/delete/:id", validateID, DeleteContact);
 // return router
 module.exports = router;
