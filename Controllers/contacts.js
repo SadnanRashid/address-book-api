@@ -1,6 +1,7 @@
 const {
   QueryListOfContacts,
   QueryTargetContact,
+  QueryUpdateContact,
 } = require("../Services/address");
 
 const GetAllContacts = async (req, res) => {
@@ -15,6 +16,15 @@ const GetTargetContact = async (req, res) => {
     return res.status(404).send({ message: "data not found" });
   }
   return res.send(targetContact);
+};
+// Update Contact
+const UpdateContact = async (req, res) => {
+  const updateResult = await QueryUpdateContact(
+    req.body.element_id,
+    req.body.element_to_update,
+    req.body.update_data
+  );
+  res.json(updateResult);
 };
 
 module.exports = { GetAllContacts, GetTargetContact };

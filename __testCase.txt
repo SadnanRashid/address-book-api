@@ -7,4 +7,25 @@ POST:
     "address" : "someAddressHere",
     "country" : "Bangladesh"
 }
--
+-----------------------------------------
+POST - Many:
+[
+    {
+    "first_name" : "an",
+    "last_name" : "Rashid",
+    "email" : "sadnan.com",
+    "phone" : 47428463121,
+    "address" : "someAddressHere",
+    "country" : "Bangladesh"
+},
+{
+    "first_name" : "an",
+    "last_name" : "Rashid",
+    "email" : "sadnan.com",
+    "phone" : 47428463121,
+    "address" : "someAddressHere",
+    "country" : "Bangladesh"
+}
+]
+-----------------------------------------
+

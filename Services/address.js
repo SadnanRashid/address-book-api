@@ -38,7 +38,25 @@ const QueryPostManyContact = async (data) => {
   try {
     const result = getCollection("contacts").insertMany(data);
     let ids = result.insertedIds;
-    console.log(ids);
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+// Update an element
+const QueryUpdateContact = async (elementID, elementToUpdate, updateData) => {
+  try {
+    const filter = { _id: ObjectId(elementID) };
+    const updateDocument = {
+      $set: {
+        [elementToUpdate]: updateData,
+      },
+    };
+    const result = await getCollection("contacts").updateOne(
+      filter,
+      updateDocument
+    );
+    console.log(result);
     return result;
   } catch (error) {
     return error;
@@ -50,4 +68,5 @@ module.exports = {
   QueryTargetContact,
   QueryPostContact,
   QueryPostManyContact,
+  QueryUpdateContact,
 };
