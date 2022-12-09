@@ -1,0 +1,10 @@
+POST:
+{
+    "first_name" : "Sadnan",
+    "last_name" : "Rashid",
+    "email" : "sad@nan.com",
+    "phone" : 47428463121,
+    "address" : "someAddressHere",
+    "country" : "Bangladesh"
+}
+-
