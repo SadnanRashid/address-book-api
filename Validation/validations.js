@@ -14,6 +14,17 @@ const isArray = (req, res, next) => {
   }
   next();
 };
+// validation for pagination - not necessary but standard to use
+const validatePagenation = (req, res, next) => {
+  const page = parseInt(req.query.page);
+  const size = parseInt(req.query.size);
+  if (!page || !size || page < 0 || size < 0) {
+    return res
+      .status(403)
+      .json({ message: "pagination must have positive page and size queries" });
+  }
+  next();
+};
 
 // Validate POST data
 // Validation of object data should return all the error causing inputs..
@@ -46,4 +57,4 @@ const validatePost = (req, res, next) => {
   next();
 };
 
-module.exports = { validateID, validatePost, isArray };
+module.exports = { validateID, validatePost, isArray, validatePagenation };

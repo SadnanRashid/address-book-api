@@ -4,9 +4,11 @@ const {
   validateID,
   validatePost,
   isArray,
+  validatePagenation,
 } = require("../Validation/validations");
 const {
   GetAllContacts,
+  GetPaginateContacts,
   GetTargetContact,
   UpdateContact,
   DeleteContact,
@@ -17,6 +19,7 @@ const {
 } = require("../Controllers/contacts_post");
 
 router.get("/all", GetAllContacts);
+router.get("/get", validatePagenation, GetPaginateContacts);
 router.get("/:id", validateID, GetTargetContact);
 router.post("/add", validatePost, PostOneContact);
 router.post("/addmany", PostManyContact);
