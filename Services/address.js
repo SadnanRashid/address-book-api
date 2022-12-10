@@ -30,7 +30,12 @@ const QueryMatchingContact = async (phase) => {
     // what to return
     const projection = {
       _id: 1,
-      // email: 1,
+      email: 1,
+      first_name: 1,
+      last_name: 1,
+      address: 1,
+      phone: 1,
+      country: 1,
     };
     const cursor = await getCollection("contacts")
       .find(query)
