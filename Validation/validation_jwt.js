@@ -9,11 +9,15 @@ const verifyJWT = async (req, res, next) => {
   // format of token = "bearer JWtoken"
   // Only read token and split bearer
   const token = authHeader.split(" ")[1];
-  jwt.verify(token, process.env.ACCESS_TOKEN, function (err, decoded) {
+  console.log(token);
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
     if (err) {
+      console.log(err);
       return res.status(403).send({ message: "forbidden access" });
     }
     req.decoded = decoded;
     next();
   });
 };
+
+module.exports = { verifyJWT };

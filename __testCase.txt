@@ -38,6 +38,9 @@ UPDATE:
 Get Contacts (Pagination):
 fetch(http://localhost:5000/api/contacts/get?page=2&size=5)
 -----------------------------------------
+GET phase matching contacts:
+[fetch (http://localhost:5000/api/contacts/getmatch/street)]
+-----------------------------------------
 JWT:
 [fetch (http://localhost:5000/api/users/jwt/user@gmail.com)]
 User Details:

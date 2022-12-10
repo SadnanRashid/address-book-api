@@ -12,18 +12,22 @@ const {
   GetTargetContact,
   UpdateContact,
   DeleteContact,
+  GetMatchingContact,
 } = require("../Controllers/contacts");
 const {
   PostOneContact,
   PostManyContact,
 } = require("../Controllers/contacts_post");
+//jsonwebtoken verification
+const { verifyJWT } = require("../Validation/validation_jwt");
 
 router.get("/all", GetAllContacts);
 router.get("/get", validatePagenation, GetPaginateContacts);
+router.get("/getmatch/:phase", GetMatchingContact);
 router.get("/:id", validateID, GetTargetContact);
-router.post("/add", validatePost, PostOneContact);
-router.post("/addmany", PostManyContact);
-router.put("/update/:id", validateID, UpdateContact);
-router.delete("/delete/:id", validateID, DeleteContact);
+router.post("/add", verifyJWT, validatePost, PostOneContact);
+router.post("/addmany", verifyJWT, PostManyContact);
+router.put("/update/:id", verifyJWT, validateID, UpdateContact);
+router.delete("/delete/:id", verifyJWT, validateID, DeleteContact);
 // return router
 module.exports = router;

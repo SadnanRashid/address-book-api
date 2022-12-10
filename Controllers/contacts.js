@@ -3,6 +3,7 @@ const {
   QueryTargetContact,
   QueryUpdateContact,
   QueryDeleteContact,
+  QueryMatchingContact,
 } = require("../Services/address");
 
 // Get all contacts in the collection
@@ -31,6 +32,14 @@ const GetTargetContact = async (req, res) => {
   }
   return res.send(targetContact);
 };
+// Get phase matching contacts based on address
+const GetMatchingContact = async (req, res) => {
+  const matchingContacts = await QueryMatchingContact(req.params.phase);
+  if (!matchingContacts) {
+    return res.status(404).send({ message: "data not found" });
+  }
+  return res.send(matchingContacts);
+};
 // Update Contact
 const UpdateContact = async (req, res) => {
   const id = req.params.id;
@@ -54,4 +63,5 @@ module.exports = {
   UpdateContact,
   DeleteContact,
   GetPaginateContacts,
+  GetMatchingContact,
 };

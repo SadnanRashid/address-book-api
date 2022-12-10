@@ -22,6 +22,25 @@ const QueryTargetContact = async (id) => {
     return error;
   }
 };
+// Get contact phase matching contacts
+const QueryMatchingContact = async (phase) => {
+  try {
+    console.log(phase);
+    const query = { $text: { $search: `\"${phase}\"` } };
+    // what to return
+    const projection = {
+      _id: 1,
+      // email: 1,
+    };
+    const cursor = await getCollection("contacts")
+      .find(query)
+      .project(projection)
+      .toArray();
+    return cursor;
+  } catch (error) {
+    return error;
+  }
+};
 
 // Post a contact
 const QueryPostContact = async (data) => {
@@ -79,4 +98,5 @@ module.exports = {
   QueryPostManyContact,
   QueryUpdateContact,
   QueryDeleteContact,
+  QueryMatchingContact,
 };
