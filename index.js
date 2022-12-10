@@ -1,5 +1,6 @@
 const express = require("express");
 const port = process.env.PORT || 5000;
+require("dotenv").config();
 
 const app = express();
 //
@@ -14,6 +15,9 @@ app.listen(port, () => {
 // get router
 const contactsRouter = require("./Routes/contacts");
 app.use("/api/contacts", contactsRouter);
+// Get user router
+const userRouter = require("./Routes/users");
+app.use("/api/users", userRouter);
 
 app.get("/", (req, res) => {
   res.send({ message: "Working..." });
