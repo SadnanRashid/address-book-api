@@ -12,7 +12,7 @@ app.listen(port, () => {
   console.log(`listening at port ${port}`);
 });
 
-// get router
+// get contacts router
 const contactsRouter = require("./Routes/contacts");
 app.use("/api/contacts", contactsRouter);
 // Get user router

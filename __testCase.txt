@@ -38,3 +38,9 @@ UPDATE:
 Get Contacts (Pagination):
 fetch(http://localhost:5000/api/contacts/get?page=2&size=5)
 -----------------------------------------
+JWT:
+[fetch (http://localhost:5000/api/users/jwt/user@gmail.com)]
+User Details:
+email: user@gmail.com
+password: 123456
+-----------------------------------------
