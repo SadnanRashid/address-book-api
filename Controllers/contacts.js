@@ -5,10 +5,23 @@ const {
   QueryDeleteContact,
 } = require("../Services/address");
 
+// Get all contacts in the collection
 const GetAllContacts = async (req, res) => {
-  // Get all contacts in the collection
-  const contactList = await QueryListOfContacts();
+  const contactList = await QueryListOfContacts().toArray();
   return res.json(contactList);
+};
+// Get contacts pagination
+const GetPaginateContacts = async (req, res) => {
+  const page = parseInt(req.query.page);
+  const size = parseInt(req.query.size);
+  const contactList = await QueryListOfContacts();
+  const contacts = await contactList
+    .skip(page * size)
+    .limit(size)
+    .toArray();
+  console.log(page, size);
+  console.log(contacts);
+  return res.json(contacts);
 };
 // Get one contact with ID
 const GetTargetContact = async (req, res) => {
@@ -40,4 +53,5 @@ module.exports = {
   GetTargetContact,
   UpdateContact,
   DeleteContact,
+  GetPaginateContacts,
 };
