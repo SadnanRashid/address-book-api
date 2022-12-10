@@ -35,3 +35,6 @@ UPDATE:
     "update_data" : "NotSadnan"
 }
 -----------------------------------------
+Get Contacts (Pagination):
+fetch(http://localhost:5000/api/contacts/get?page=2&size=5)
+-----------------------------------------
