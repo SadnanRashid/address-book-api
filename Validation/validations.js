@@ -14,6 +14,15 @@ const isArray = (req, res, next) => {
   }
   next();
 };
+// Validate GetMatchingContact
+const validateParamOfPhase = (req, res, next) => {
+  if (!req.params.phase) {
+    return res
+      .status(403)
+      .json({ message: "the request must contain a search phase" });
+  }
+  next();
+};
 // validation for pagination - not necessary but standard to use
 const validatePagenation = (req, res, next) => {
   const page = parseInt(req.query.page);
@@ -57,4 +66,10 @@ const validatePost = (req, res, next) => {
   next();
 };
 
-module.exports = { validateID, validatePost, isArray, validatePagenation };
+module.exports = {
+  validateID,
+  validatePost,
+  isArray,
+  validatePagenation,
+  validateParamOfPhase,
+};

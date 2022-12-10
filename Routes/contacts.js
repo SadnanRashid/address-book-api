@@ -5,6 +5,7 @@ const {
   validatePost,
   isArray,
   validatePagenation,
+  validateParamOfPhase,
 } = require("../Validation/validations");
 const {
   GetAllContacts,
@@ -23,7 +24,7 @@ const { verifyJWT } = require("../Validation/validation_jwt");
 
 router.get("/all", GetAllContacts);
 router.get("/get", validatePagenation, GetPaginateContacts);
-router.get("/getmatch/:phase", GetMatchingContact);
+router.get("/getmatch/:phase", validateParamOfPhase, GetMatchingContact);
 router.get("/:id", validateID, GetTargetContact);
 router.post("/add", verifyJWT, validatePost, PostOneContact);
 router.post("/addmany", verifyJWT, PostManyContact);
