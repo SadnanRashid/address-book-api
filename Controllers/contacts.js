@@ -32,7 +32,6 @@ const UpdateContact = async (req, res) => {
 // Delete contact
 const DeleteContact = async (req, res) => {
   const deleteResult = await QueryDeleteContact(req.params.id);
-  console.log(deleteResult);
   res.send(deleteResult);
 };
 
