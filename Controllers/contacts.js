@@ -8,7 +8,7 @@ const {
 
 // Get all contacts in the collection
 const GetAllContacts = async (req, res) => {
-  const contactList = await QueryListOfContacts().toArray();
+  const contactList = await QueryListOfContacts();
   return res.json(contactList);
 };
 // Get contacts pagination
